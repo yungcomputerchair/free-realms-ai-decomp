@@ -1,0 +1,25 @@
+// addr: 0x0103af40
+// name: RewardBundleEntryClientExitUrl_ctor
+// subsystem: common/util/misc
+// Decompiled pseudo-C from FreeRealms.exe (Ghidra). First-party.
+
+
+undefined4 * __fastcall RewardBundleEntryClientExitUrl_ctor(undefined4 *param_1)
+
+{
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+                    /* constructs RewardBundleEntryBase and installs RewardBundleEntryClientExitUrl
+                       vtable. */
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_01638968;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  RewardBundleEntryBase_ctor(param_1);
+  *param_1 = RewardBundleEntryClientExitUrl::vftable;
+  ExceptionList = local_c;
+  return param_1;
+}
+

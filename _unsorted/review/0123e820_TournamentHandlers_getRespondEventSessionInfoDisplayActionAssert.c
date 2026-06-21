@@ -1,0 +1,21 @@
+// addr: 0x0123e820
+// name: TournamentHandlers_getRespondEventSessionInfoDisplayActionAssert
+// subsystem: common/review
+// Decompiled pseudo-C from FreeRealms.exe (Ghidra). First-party.
+
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+/* Setting prototype: char * TournamentHandlers_getRespondEventSessionInfoDisplayActionAssert(void)
+    */
+
+char * TournamentHandlers_getRespondEventSessionInfoDisplayActionAssert(void)
+
+{
+                    /* kRespondEventSessionInfoDisplayAction assert/source marker from
+                       tournamenthandlers.cc line 773. Module:
+                       common/coreclient/ui/tournamenthandlers.cc. */
+  return 
+  "kRespondEventSessionInfoDisplayAction : 0 : ..\\common\\coreclient\\ui\\tournamenthandlers.cc:773"
+  ;
+}
+

@@ -1,0 +1,31 @@
+// addr: 0x014ce3b0
+// name: LobbyCommand_AddIgnoreByName_ctor
+// subsystem: common/networking/lobby_command
+// Decompiled pseudo-C from FreeRealms.exe (Ghidra). First-party.
+
+
+/* Setting prototype: void * LobbyCommand_AddIgnoreByName_ctor(void * this) */
+
+void * __fastcall LobbyCommand_AddIgnoreByName_ctor(void *this)
+
+{
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+                    /* Constructs LobbyCommand_AddIgnoreByName by installing its vtable and
+                       initializing an SSO name string. Evidence is
+                       LobbyCommand_AddIgnoreByName::vftable and create callers. */
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_016abb03;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  LobbyCommand_ctor(DAT_01b839d8 ^ (uint)&stack0xffffffec);
+  *(undefined ***)this = LobbyCommand_AddIgnoreByName::vftable;
+  *(undefined4 *)((int)this + 0x20) = 0xf;
+  *(undefined4 *)((int)this + 0x1c) = 0;
+  *(undefined1 *)((int)this + 0xc) = 0;
+  ExceptionList = local_c;
+  return this;
+}
+

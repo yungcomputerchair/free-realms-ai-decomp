@@ -1,0 +1,17 @@
+// addr: 0x01258500
+// name: FrtwGameHandlers_getAddModelAssert
+// subsystem: common/review
+// Decompiled pseudo-C from FreeRealms.exe (Ghidra). First-party.
+
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+/* Setting prototype: char * FrtwGameHandlers_getAddModelAssert(void) */
+
+char * FrtwGameHandlers_getAddModelAssert(void)
+
+{
+                    /* AddModel assert/source marker from frtwgamehandlers.cc line 141. Module:
+                       engine/game/frtwgamehandlers.cc. */
+  return "AddModel : 0 : .\\engine\\game\\frtwgamehandlers.cc:141";
+}
+

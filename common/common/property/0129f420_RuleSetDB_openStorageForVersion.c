@@ -1,0 +1,111 @@
+// addr: 0x0129f420
+// name: RuleSetDB_openStorageForVersion
+// subsystem: common/common/property
+// source (binary assert): common/common/property/RuleSetDB.cpp
+// Decompiled pseudo-C from FreeRealms.exe (Ghidra). First-party.
+
+
+/* WARNING: Function: __security_check_cookie replaced with injection: security_check_cookie */
+/* Setting prototype: void RuleSetDB_openStorageForVersion(void * this, int version) */
+
+void __thiscall RuleSetDB_openStorageForVersion(void *this,int version)
+
+{
+  void *this_00;
+  int *key;
+  undefined4 *extraout_EAX;
+  int *piVar1;
+  void *pvVar2;
+  undefined4 *puVar3;
+  bool *pbVar4;
+  void *pvStack_58;
+  int local_54;
+  undefined1 uStack_50;
+  void *pvStack_4c;
+  undefined4 uStack_40;
+  undefined4 uStack_3c;
+  uint uStack_38;
+  undefined1 local_34 [4];
+  undefined1 auStack_30 [4];
+  basic_string<char,std::char_traits<char>,std::allocator<char>_> abStack_2c [4];
+  void *pvStack_28;
+  undefined4 uStack_18;
+  uint uStack_14;
+  uint local_10;
+  void *local_c;
+  undefined1 *puStack_8;
+  int iStack_4;
+  
+                    /* Initializes DBM storage for a ruleset database version if missing, seeds the
+                       next id to 10000, opens ./data/archetypes/<version>.dat, and clears load
+                       flags. Evidence: RuleSetDB.cpp assert 'v != -1', './data/archetypes', .dat
+                       suffix, and storage object allocation. */
+  iStack_4 = 0xffffffff;
+  puStack_8 = &LAB_0166b24b;
+  local_c = ExceptionList;
+  local_10 = DAT_01b839d8 ^ (uint)&pvStack_58;
+  key = (int *)(DAT_01b839d8 ^ (uint)&stack0xffffff98);
+  ExceptionList = &local_c;
+  if (version == -1) {
+    FUN_012f5a60("v != -1","..\\common\\common\\property\\RuleSetDB.cpp",0x1d6);
+  }
+  local_54 = *(int *)((int)this + 0x20);
+  this_00 = (void *)((int)this + 0x1c);
+  RBTreeInt_lowerBound_flag15_alt(this_00,local_34,&version,key);
+  if (((void *)*extraout_EAX == (void *)0x0) || ((void *)*extraout_EAX != this_00)) {
+    FUN_00d83c2d();
+  }
+  if (extraout_EAX[1] == local_54) {
+    uStack_14 = 0xf;
+    uStack_18 = 0;
+    pvStack_28 = (void *)((uint)pvStack_28 & 0xffffff00);
+    std::basic_string<char,std::char_traits<char>,std::allocator<char>_>::assign
+              (abStack_2c,"./data/archetypes",0x11);
+    iStack_4 = 0;
+    piVar1 = IntDefaultMap_getOrInsert((void *)((int)this + 4),&version);
+    *piVar1 = 10000;
+    pvStack_58 = Mem_Alloc(0x58);
+    iStack_4._0_1_ = 1;
+    if (pvStack_58 == (void *)0x0) {
+      pvVar2 = (void *)0x0;
+    }
+    else {
+      pvVar2 = DirDBM_ctor(pvStack_58);
+    }
+    iStack_4._0_1_ = 0;
+    puVar3 = IntToRecordMap_getOrInsert(this_00,&version,key);
+    *puVar3 = pvVar2;
+    puVar3 = IntToRecordMap_getOrInsert(this_00,&version,key);
+    piVar1 = (int *)version;
+    (**(code **)(*(int *)*puVar3 + 0x28))();
+    uStack_3c = 0xf;
+    uStack_40 = 0;
+    uStack_50 = 0;
+    std::basic_string<char,std::char_traits<char>,std::allocator<char>_>::assign
+              ((basic_string<char,std::char_traits<char>,std::allocator<char>_> *)&local_54,".dat",4
+              );
+    puStack_8 = (undefined1 *)CONCAT31(puStack_8._1_3_,2);
+    puVar3 = IntToRecordMap_getOrInsert(this_00,&stack0x00000000,piVar1);
+    (**(code **)(*(int *)*puVar3 + 4))(auStack_30,&local_54);
+    iStack_4 = (uint)iStack_4._1_3_ << 8;
+    if (0xf < uStack_38) {
+                    /* WARNING: Subroutine does not return */
+      _free(pvStack_4c);
+    }
+    uStack_38 = 0xf;
+    uStack_3c = 0;
+    pvStack_4c = (void *)((uint)pvStack_4c & 0xffffff00);
+    RuleSetNameMap_findOrInsert(&version);
+    RuleSetIndexMap_findOrInsert(&version);
+    pbVar4 = IntToBoolMap_getOrInsert((void *)((int)this + 0x10),&version,key);
+    *pbVar4 = false;
+    iStack_4 = 0xffffffff;
+    if (0xf < uStack_14) {
+                    /* WARNING: Subroutine does not return */
+      _free(pvStack_28);
+    }
+  }
+  ExceptionList = local_c;
+  return;
+}
+

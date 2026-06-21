@@ -1,0 +1,50 @@
+// addr: 0x00a5c8b0
+// name: FUN_00a5c8b0
+// subsystem: common/net/uploader
+// Decompiled pseudo-C from FreeRealms.exe (Ghidra). First-party.
+
+
+/* Setting prototype: void FUN_00a5c8b0(void * this, int arg_) */
+
+void __thiscall FUN_00a5c8b0(void *this,int arg_)
+
+{
+  GuiGfxMovie *pGVar1;
+  uint uVar2;
+  void *pvVar3;
+  undefined4 uVar4;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+                    /* Releases an existing GFx movie, lazily allocates a 0x30-byte helper object,
+                       then initializes/loads a new GUI movie path or resource. Class identity is
+                       unknown. */
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_015b7adb;
+  local_c = ExceptionList;
+  uVar2 = DAT_01b839d8 ^ (uint)&stack0xffffffec;
+  ExceptionList = &local_c;
+  pGVar1 = *(GuiGfxMovie **)((int)this + 0x3c0);
+  if (pGVar1 != (GuiGfxMovie *)0x0) {
+    *(undefined4 *)((int)this + 0x3c0) = 0;
+    GFxWrap::ReleaseMovie(pGVar1);
+  }
+  if (*(int *)((int)this + 0x3c4) == 0) {
+    pvVar3 = Mem_Alloc(0x30);
+    local_4 = 0;
+    if (pvVar3 == (void *)0x0) {
+      uVar4 = 0;
+    }
+    else {
+      uVar4 = FUN_00a5c5d0();
+    }
+    local_4 = 0xffffffff;
+    *(undefined4 *)((int)this + 0x3c4) = uVar4;
+  }
+  FUN_006f9e60(arg_);
+  FUN_00caa4a0(uVar2);
+  ExceptionList = local_c;
+  return;
+}
+

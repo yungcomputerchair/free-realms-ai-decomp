@@ -1,0 +1,78 @@
+// addr: 0x0100bd30
+// name: VideoCapture_JPG_resetWriteJobQueue
+// subsystem: common/media/video
+// Decompiled pseudo-C from FreeRealms.exe (Ghidra). First-party.
+
+
+/* Setting prototype: void VideoCapture_JPG_resetWriteJobQueue(void * this, void * jobConfig) */
+
+void __thiscall VideoCapture_JPG_resetWriteJobQueue(void *this,void *jobConfig)
+
+{
+  void *pvVar1;
+  undefined4 uVar2;
+  undefined4 uVar3;
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+                    /* Rebuilds the JPG write job queue by allocating a write job record,
+                       constructing its CaptureCommon callback handler, creating a queue, and
+                       releasing the previous queue state. */
+  local_4 = 0xffffffff;
+  puStack_8 = &LAB_016332e9;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  pvVar1 = Mem_Alloc(0xb0);
+  local_4 = 0;
+  if (pvVar1 == (void *)0x0) {
+    jobConfig = (void *)0x0;
+  }
+  else {
+    jobConfig = VideoCapture_JPG_WriteJobQueue_ctor(pvVar1,jobConfig);
+  }
+  local_4 = 1;
+  pvVar1 = Mem_Alloc(0x28);
+  local_4._0_1_ = 2;
+  if (pvVar1 == (void *)0x0) {
+    uVar2 = 0;
+  }
+  else {
+    uVar2 = CaptureCommon_JPGWriteJobCallbackHandler_ctor(jobConfig);
+  }
+  local_4._0_1_ = 3;
+  pvVar1 = Mem_Alloc(0x328);
+  local_4._0_1_ = 4;
+  if (pvVar1 == (void *)0x0) {
+    uVar3 = 0;
+  }
+  else {
+    uVar3 = FUN_00fc6db0();
+  }
+  local_4 = CONCAT31(local_4._1_3_,5);
+  FUN_00fc5a60(uVar2);
+  FUN_00fc70e0(1,0x4000,2,0);
+  pvVar1 = *(void **)((int)this + 8);
+  if (pvVar1 != (void *)0x0) {
+    FUN_01009e70();
+                    /* WARNING: Subroutine does not return */
+    _free(pvVar1);
+  }
+  *(void **)((int)this + 8) = jobConfig;
+  if (*(undefined4 **)((int)this + 0x10) != (undefined4 *)0x0) {
+    (**(code **)**(undefined4 **)((int)this + 0x10))(1);
+    *(undefined4 *)((int)this + 0x10) = 0;
+  }
+  *(undefined4 *)((int)this + 0x10) = uVar2;
+  pvVar1 = *(void **)this;
+  if (pvVar1 != (void *)0x0) {
+    FUN_00fc6e40();
+                    /* WARNING: Subroutine does not return */
+    _free(pvVar1);
+  }
+  *(undefined4 *)this = uVar3;
+  *(undefined1 *)((int)this + 0x18) = 0;
+  ExceptionList = local_c;
+  return;
+}
+

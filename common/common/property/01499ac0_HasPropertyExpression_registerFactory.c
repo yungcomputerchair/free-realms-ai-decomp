@@ -1,0 +1,27 @@
+// addr: 0x01499ac0
+// name: HasPropertyExpression_registerFactory
+// subsystem: common/common/property
+// Decompiled pseudo-C from FreeRealms.exe (Ghidra). First-party.
+
+
+/* WARNING: Unknown calling convention -- yet parameter storage is locked */
+/* Setting prototype: void HasPropertyExpression_registerFactory(void) */
+
+void HasPropertyExpression_registerFactory(void)
+
+{
+  void *this;
+  uint typeId_;
+  code *factoryFn;
+  
+                    /* Registers the HasPropertyExpression allocation factory under
+                       component/property type id 0x1b1. The wrapper calls
+                       ComponentFactory_initSingleton and the paired registry hook with a callback
+                       whose constructor installs HasPropertyExpression::vftable. */
+  factoryFn = HasPropertyExpression_create;
+  typeId_ = 0x1b1;
+  ComponentFactory_initSingleton();
+  ComponentFactory_setFactoryForType(this,typeId_,factoryFn);
+  return;
+}
+

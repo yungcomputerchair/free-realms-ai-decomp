@@ -1,0 +1,32 @@
+// addr: 0x013b2a40
+// name: LobbyCommand_dtor_deleting
+// subsystem: common/networking
+// Decompiled pseudo-C from FreeRealms.exe (Ghidra). First-party.
+
+
+/* Setting prototype: void * LobbyCommand_dtor_deleting(void * this, char flags_) */
+
+void * __thiscall LobbyCommand_dtor_deleting(void *this,char flags_)
+
+{
+  void *local_c;
+  undefined1 *puStack_8;
+  undefined4 local_4;
+  
+                    /* Scalar deleting destructor for LobbyCommand; installs LobbyCommand vtable,
+                       invokes NetworkCommand base destructor, and frees this when requested.
+                       Evidence: explicit LobbyCommand::vftable and call to NetworkCommand_dtor. */
+  puStack_8 = &LAB_016879f8;
+  local_c = ExceptionList;
+  ExceptionList = &local_c;
+  *(undefined ***)this = LobbyCommand::vftable;
+  local_4 = 0xffffffff;
+  NetworkCommand_dtor(this);
+  if ((flags_ & 1U) != 0) {
+                    /* WARNING: Subroutine does not return */
+    _free(this);
+  }
+  ExceptionList = local_c;
+  return this;
+}
+
